@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Task List";
+}
+
+<h1 class="display-4">Nova Task</h1>
+
+<form>
+  <div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Descrição</label>
+  <textarea class="form-control" rows="3"></textarea>
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Criar</button>
+
+   <a class="btn btn-secondary" asp-controller="Task" asp-action="Index" role="button">Voltar</a>
+</form>
