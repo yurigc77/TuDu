@@ -1,13 +1,14 @@
-﻿@{
+﻿@model TaskModel
+@{
     ViewData["Title"] = "Criar Task";
 }
 
 <h1 class="display-4">Nova Task</h1>
 
-<form>
+<form asp-controller="Task" asp-action="CriarTask" method="post">
   <div class="mb-3">
   <label for="exampleFormControlTextarea1" class="form-label">Descrição</label>
-  <textarea class="form-control" rows="3"></textarea>
+  <textarea typeof="text" asp-for="Description" class="form-control" rows="3"></textarea>
   </div>
   
   <button type="submit" class="btn btn-primary">Criar</button>

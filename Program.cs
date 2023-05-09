@@ -1,12 +1,14 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using TuDu.Data;
+using TuDu.Repositorio;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<BancoContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddScoped<ITaskRepositorio, TaskRepositorio>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
