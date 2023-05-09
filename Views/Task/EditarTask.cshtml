@@ -1,13 +1,17 @@
-﻿@{
+﻿@model TaskModel
+@{
     ViewData["Title"] = "Editar Task";
 }
 
 <h1 class="display-4">Editar Task</h1>
 
-<form>
+<form asp-controller="Task" asp-action="EditarTask" method="post">
+
+  <input type="hidden" asp-for="Id" />
+
   <div class="mb-3">
   <label for="exampleFormControlTextarea1" class="form-label">Descrição</label>
-  <textarea class="form-control" rows="3"></textarea>
+  <textarea typeof="text" asp-for="Description" class="form-control" rows="3"></textarea>
   </div>
   
   <button type="submit" class="btn btn-primary">Editar</button>

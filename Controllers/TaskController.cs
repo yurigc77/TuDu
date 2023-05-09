@@ -24,9 +24,10 @@ public class TaskController : Controller
         return View();
     }
 
-    public IActionResult EditarTask()
+    public IActionResult EditarTask(int id)
     {
-        return View();
+        TaskModel task = _taskRepositorio.ListarPorId(id);
+        return View(task);
     }
 
     public IActionResult ExcluirTask()
@@ -38,6 +39,13 @@ public class TaskController : Controller
     public IActionResult CriarTask(TaskModel task)
     {
         _taskRepositorio.Adicionar(task);
+        return RedirectToAction("Index");
+    }
+
+    [HttpPost]
+    public IActionResult EditarTask(TaskModel task)
+    {
+        _taskRepositorio.Atualizar(task);
         return RedirectToAction("Index");
     }
 }

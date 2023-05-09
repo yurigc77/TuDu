@@ -18,6 +18,11 @@ public class TaskRepositorio : ITaskRepositorio
     {
         return _bancoContext.Tasks.ToList();
     }
+
+    public TaskModel ListarPorId(int id)
+    {
+        return _bancoContext.Tasks.FirstOrDefault(x => x.Id == id);
+    }
  
     public TaskModel Adicionar(TaskModel task)
     {
@@ -29,4 +34,21 @@ public class TaskRepositorio : ITaskRepositorio
         return task;
     }
 
+    public TaskModel Atualizar(TaskModel task)
+    {
+        TaskModel taskDB = ListarPorId(task.Id);
+
+        if(taskDB == null)
+        {
+            throw new Exception("Erro ao atualizar o banco");
+        }
+
+        taskDB.Description = task.Description;
+
+        _bancoContext.Tasks.Update(taskDB);
+
+        _bancoContext.SaveChanges();
+
+        return taskDB;
+    }
 }
