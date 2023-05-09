@@ -12,4 +12,6 @@ public interface ITaskRepositorio
 
     TaskModel Atualizar(TaskModel task);
 
+    bool Excluir(int id);
+
 }

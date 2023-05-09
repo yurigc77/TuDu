@@ -1,4 +1,5 @@
-﻿using TuDu.Data;
+﻿using System.Threading.Tasks;
+using TuDu.Data;
 using TuDu.Models;
 
 namespace TuDu.Repositorio;
@@ -50,5 +51,20 @@ public class TaskRepositorio : ITaskRepositorio
         _bancoContext.SaveChanges();
 
         return taskDB;
+    }
+
+    public bool Excluir(int id)
+    {
+        TaskModel taskDB = ListarPorId(id);
+
+        if (taskDB == null)
+        {
+            throw new Exception("Erro ao excluir item");
+        }
+
+        _bancoContext.Tasks.Remove(taskDB);
+        _bancoContext.SaveChanges();
+
+        return true;
     }
 }

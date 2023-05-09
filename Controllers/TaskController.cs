@@ -30,9 +30,16 @@ public class TaskController : Controller
         return View(task);
     }
 
-    public IActionResult ExcluirTask()
+    public IActionResult ExcluirTask(int id)
     {
-        return View();
+        TaskModel task = _taskRepositorio.ListarPorId(id);
+        return View(task);
+    }
+
+    public IActionResult Excluir(int id)
+    {
+        _taskRepositorio.Excluir(id);
+        return RedirectToAction("Index");
     }
 
     [HttpPost]
