@@ -42,6 +42,13 @@ public class TaskController : Controller
         return RedirectToAction("Index");
     }
 
+    public IActionResult CheckTask(int id)
+    {
+        TaskModel task = _taskRepositorio.ListarPorId(id);
+        _taskRepositorio.Check(task);
+        return RedirectToAction("Index");
+    }
+
     [HttpPost]
     public IActionResult CriarTask(TaskModel task)
     {

@@ -14,4 +14,5 @@ public interface ITaskRepositorio
 
     bool Excluir(int id);
 
+    bool Check(TaskModel task);
 }

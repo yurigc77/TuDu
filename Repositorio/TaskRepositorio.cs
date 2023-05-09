@@ -67,4 +67,29 @@ public class TaskRepositorio : ITaskRepositorio
 
         return true;
     }
+
+    public bool Check(TaskModel task)
+    {
+        TaskModel taskDB = ListarPorId(task.Id);
+
+        if (taskDB == null)
+        {
+            throw new Exception("Erro ao atualizar o banco");
+        }
+
+        if(task.IsCompleted == true) 
+        {
+            taskDB.IsCompleted = false;
+        }
+        else
+        {
+            taskDB.IsCompleted = true;
+        }
+
+        _bancoContext.Tasks.Update(taskDB);
+
+        _bancoContext.SaveChanges();
+
+        return true;
+    }
 }

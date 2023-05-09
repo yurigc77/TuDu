@@ -31,7 +31,7 @@
                 <tr>
                   <th scope="row">@task.Id</th>
                   <td>@task.Description</td>
-                  <td><a role="button"  class="btn btn-outline-success" data-bs-toggle="button" disabled="@(!task.IsCompleted)" checked="@task.IsCompleted" asp-route-id="@task.Id" >Feito</a></td>
+                  <td><a role="button"  class=@(task.IsCompleted? "btn btn-success":"btn btn-outline-success") asp-route-id="@task.Id" asp-controller="Task" asp-action="CheckTask">Feito</a></td>
                   <td>
                     <div class="d-grid gap-2 d-md-block">
                       <a role="button" class="btn btn-outline-primary" asp-route-id="@task.Id" asp-controller="Task" asp-action="EditarTask" >Editar</a>
