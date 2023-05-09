@@ -12,6 +12,7 @@
   <div class="mb-3">
   <label for="exampleFormControlTextarea1" class="form-label">Descrição</label>
   <textarea typeof="text" asp-for="Description" class="form-control" rows="3"></textarea>
+  @Html.ValidationMessageFor(x=>x.Description)
   </div>
   
   <button type="submit" class="btn btn-primary">Editar</button>

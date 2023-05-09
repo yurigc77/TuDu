@@ -45,14 +45,25 @@ public class TaskController : Controller
     [HttpPost]
     public IActionResult CriarTask(TaskModel task)
     {
-        _taskRepositorio.Adicionar(task);
-        return RedirectToAction("Index");
+        if (ModelState.IsValid)
+        {
+            _taskRepositorio.Adicionar(task);
+            return RedirectToAction("Index");
+        }
+
+        return View(task);
+
     }
 
     [HttpPost]
     public IActionResult EditarTask(TaskModel task)
     {
-        _taskRepositorio.Atualizar(task);
-        return RedirectToAction("Index");
+        if (ModelState.IsValid)
+        {
+            _taskRepositorio.Atualizar(task);
+            return RedirectToAction("Index");
+        }
+
+        return View(task);
     }
 }
