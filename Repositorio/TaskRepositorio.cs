@@ -77,14 +77,7 @@ public class TaskRepositorio : ITaskRepositorio
             throw new Exception("Erro ao atualizar o banco");
         }
 
-        if(task.IsCompleted == true) 
-        {
-            taskDB.IsCompleted = false;
-        }
-        else
-        {
-            taskDB.IsCompleted = true;
-        }
+        taskDB.IsCompleted = !task.IsCompleted;
 
         _bancoContext.Tasks.Update(taskDB);
 
